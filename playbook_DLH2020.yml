@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars:
+    mysql_set_password: Crosemont1
 
   tasks:
     - ping: ~
