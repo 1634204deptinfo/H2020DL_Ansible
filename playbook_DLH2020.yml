@@ -27,12 +27,12 @@
         state: latest
 
 
-
-    - name: test mysql_secure_installation
-      mysql_secure_installation:
-        login_password: ''
-        new_password: Crosemont1
-
+    - name: MySQL | Set the root password.
+      mysql_user: 
+	name=root 
+	host=localhost
+	password={{ mysql_root_password }}
+      become: true
 
 
     - name: Add PHP 7 PPA repository
