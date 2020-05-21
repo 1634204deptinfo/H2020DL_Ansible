@@ -1,0 +1,13 @@
+---
+- hosts: vb
+
+  tasks:
+
+    - name: Install Nginx web server
+      become: true
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Add PHP 7 PPA repository
+
