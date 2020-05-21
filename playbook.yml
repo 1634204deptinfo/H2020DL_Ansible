@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: vb
 
   tasks:
     - ping: ~
@@ -14,15 +14,22 @@
       apt:
         upgrade: safe
 
-    - name: Install cowsay - it's probably important
-      become: true
-      apt:
-        name: cowsay
-
     - name: Install Git VCS
       become: true
       apt:
         name: git
+        state: latest
+
+    - name: Install Nginx web server
+      become: true
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Install MySQL DB server
+      become: true
+      apt:
+        name: mysql-server
         state: latest
 
     - name: Add PHP 7 PPA repository
