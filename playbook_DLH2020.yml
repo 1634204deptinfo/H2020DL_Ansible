@@ -26,14 +26,11 @@
         name: nginx
         state: latest
 
-
-    - name: MySQL | Set the root password.
-      mysql_user: 
-	name=root 
-	host=localhost
-	password={{ mysql_root_password }}
+    - name: Install MySQL DB server
       become: true
-
+      apt:
+        name: mysql-server
+        state: latest
 
     - name: Add PHP 7 PPA repository
       become: true
