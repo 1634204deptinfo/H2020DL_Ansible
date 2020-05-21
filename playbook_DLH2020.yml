@@ -26,12 +26,14 @@
         name: nginx
         state: latest
 
-    - name: Install MySQL DB server
-      become: true
-      apt:
-        name: mysql-server
-	password={{Crosemont1}}"
-        state: present
+    - name: Set root user password
+    mysql_user: name=root
+              host="{{ item }}"
+              password="{{ mysql_root_password }}"
+              check_implicit_admin=yes
+              login_user="{{ mysql_user }}"
+              login_password="{{ mysql_root_password }}"
+              state=present
 
     - name: Add PHP 7 PPA repository
       become: true
