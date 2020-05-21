@@ -1,6 +1,8 @@
 ---
 - hosts: all
-
+  user: root
+  vars:
+    mysql_password: Crosemont1
   tasks:
     - ping: ~
 
@@ -26,11 +28,17 @@
         name: nginx
         state: latest
 
+
+
     - name: Install MySQL DB server
       become: true
       apt:
         name: mysql-server
         state: latest
+      mysql_user:
+	name: root
+	login_user:root
+	login_password: "{{ mysql_password }}"
 
     - name: Add PHP 7 PPA repository
       become: true
