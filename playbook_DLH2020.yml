@@ -30,7 +30,8 @@
       become: true
       apt:
         name: mysql-server
-        state: latest
+	password={{Crosemont1}}"
+        state: present
 
     - name: Add PHP 7 PPA repository
       become: true
