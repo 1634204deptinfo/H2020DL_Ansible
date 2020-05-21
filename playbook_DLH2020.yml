@@ -26,14 +26,14 @@
         name: nginx
         state: latest
 
-    - name: Set root user password
-      mysql_user: name=root
-              host="{{ item }}"
-              password="{{ mysql_root_password }}"
-              check_implicit_admin=yes
-              login_user="{{ mysql_user }}"
-              login_password="{{ mysql_root_password }}"
-              state=present
+
+
+    - name: test mysql_secure_installation
+      mysql_secure_installation:
+        login_password: ''
+        new_password: Crosemont1
+
+
 
     - name: Add PHP 7 PPA repository
       become: true
