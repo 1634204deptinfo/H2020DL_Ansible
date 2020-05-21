@@ -26,11 +26,10 @@
         name: nginx
         state: latest
 
-    - name: Install MySQL DB server
+    - name: Set MySQL root password before installing
       become: true
-      apt:
-        name: mysql-server
-        state: latest
+      debconf: name='mysql-server' question='mysql-server/root_password' value='{{mysql_set_password_root | quote}}' vtype='password'
+      changed_when: false
 
     - name: Add PHP 7 PPA repository
       become: true
